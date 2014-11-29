@@ -62,6 +62,42 @@
                 each comment should also have UI allowing the user to vote up/down the comment
                 as well as delete it
                  -->
+                <p>
+                    <button class="btn btn-primary" ng-click="refreshComms()">Refresh</button>    {{specialmsg}}
+                </p>
+
+
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>Title</th>
+                        <th>Rating</th>
+                        <th>Name</th>
+                        <th>Score</th>
+                        <th>Body</th>
+                        <th></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="comm in comms">
+                        <td>{{comm.title}} </td>
+                        <td>
+                            <rating max="5" ng-model="comm.rating"
+                                    readonly="true"></rating>
+                        </td>
+                        <td>{{comm.name}} </td>
+                        <td>
+                            {{comm.score || 0}}
+                            <span class="glyphicon glyphicon-thumbs-up" ng-click="incrementScores(comm, 1)"></span>
+                            <span class="glyphicon glyphicon-thumbs-down" ng-click="incrementScores(comm, -1)"></span>
+                        </td>
+                        <td>{{comm.body}} </td>
+                        <td> <button class="btn btn-primary" ng-click="deleteComm(comm.objectId)">Delete</button> </td>
+                    </tr>
+
+                    </tbody>
+                </table>
+
             </section>
 
         </main>
