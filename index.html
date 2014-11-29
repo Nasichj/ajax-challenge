@@ -9,7 +9,7 @@
     </head>
     <body>
 
-        <main class="container">
+        <main class="container" ng-app="MyTestApp" ng-controller="CommsController">>
             <section>
                 <img src="img/super-bass-o-matic-76.jpg" alt="product picture" class="product-picture">
                 <h1>The Super Bass-o-Matic '76</h1>
@@ -26,6 +26,33 @@
                 http://angular-ui.github.io/bootstrap/#/rating
                 their script file is included below
                 -->
+                <form>
+                    <div class="form-group">
+                        <label for="comm-title">Title</label>
+                        <input type="text" id="comm-title" class="form-control"
+                               placeholder="title of new comment" ng-model="newComm.title"/>
+                    </div>
+                    <div class="form-group">
+                        <label for="comm-name">Name</label>
+                        <input type="text" id="comm-name" class="form-control"
+                               placeholder="name of the user" ng-model="newComm.name"/>
+                    </div>
+                    <div class="form-group">
+                        <label for="comm-rating">Rating: </label>
+                        <rating max="5" ng-model="newComm.rating"></rating>
+
+                    </div>
+                    <div class="form-group">
+                        <label for="comm-body">Body: </label>
+                        <textarea id="comm-body" class="form-control"
+                                  placeholder="body of the comment" ng-model="newComm.body"></textarea>
+
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary"
+                                ng-disabled="inserting" ng-click="addComm()">Add Comment</button>
+                    </div>
+                </form>
             </section>
 
             <section>
